@@ -1,0 +1,13 @@
+[Unit]
+Description=IPMI exporter service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=impi_exporter
+Group=impi_exporter
+Type=simple
+ExecStart=
+
+[Install]
+WantedBy=multi-user.target

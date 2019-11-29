@@ -1,4 +1,4 @@
-# IMPI Prometheus exporter. 
+# IPMI Prometheus exporter. 
 
 The idea behind this exporter is to expose the power measurements given by the following command:
 
