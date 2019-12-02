@@ -13,5 +13,8 @@ func main(){
 	// https://github.com/prometheus/prometheus/wiki/Default-port-allocations
 	http.Handle("/metrics", promhttp.Handler())
 	log.Info("Begining to serve on port 9338")
+	go func(){
+		self_update()
+	}()
 	log.Fatal(http.ListenAndServe(":9338",nil))
 }
