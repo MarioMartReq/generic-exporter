@@ -4,10 +4,10 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=impi_exporter
-Group=impi_exporter
+User=ipmi-exporter
+Group=ipmi-exporter
 Type=simple
-ExecStart=
+ExecStart=/etc/ipmi-exporter/ipmi-exporter/ipmi-exporter
 
 [Install]
 WantedBy=multi-user.target
