@@ -1,6 +1,6 @@
-# Generic CLI-metric Prometheus exporter. 
+# Generic CLI-metrics Prometheus exporter. 
 
-This is an exporter that was originally created to expose the power consumption measurement given by the below-included command, but it is so generic that could be adapted fairly simple to expose any other desired CLI variable. The instructions describe the installation of an `ipmi-exporter`, but changing the name both in the directories and files will generate no problems at all. 
+This is an exporter that was originally created to expose the power consumption measurement given by the below-included command, but it is so generic that could be adapted fairly simple to expose any other desired command-line variable. The instructions describe the installation of an `ipmi-exporter`, but changing the name both in the directories and files will generate no problems at all. 
 
 ```bash
 ipmi-sensors -h localhost --no-sensor-type-output --no-header-output --comma-separated-output --sensor-types Current
