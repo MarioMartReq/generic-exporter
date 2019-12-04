@@ -31,6 +31,7 @@ func getPower(){
 	powerConsumption.Set(watts)
 }
 
+// This is the first function to execute
 func init() {
 	prometheus.MustRegister(powerConsumption)
 	getPower()
