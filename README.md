@@ -9,11 +9,11 @@ ipmi-sensors -h localhost --no-sensor-type-output --no-header-output --comma-sep
 To change or add new exposed metrics, the function `getPower` inside [`collector.go`](https://github.com/MarioMartReq/generic-exporter/blob/master/collector.go) needs to be changed or duplicated. That function launches a command, captures the output and isolates the desired metric. In addition, new variables should be defined as `var powerConsumption` inside of [`collector.go`](https://github.com/MarioMartReq/generic-exporter/blob/master/collector.go).
 
 ## Installation guide.
-### 1. Pre-requisites.
+### 0. Pre-requisites.
 - Golang. It is mandatory to have one of the latest versions to support some of the network functionalities. (The current implementation was compiled with the 1.13 version) 
 - Sudo access to create new users and service to run the exporter. Besides, the above included `ipmi` command requires `sudo` to be executed. 
 
-### 2. Creating a new user and setting up the environment.
+### 1. Creating a new user and setting up the environment.
 There is going to be a user created to run this exporter, and the following command will create it without a home directory nor the capability of logging in. 
 
 ```bash
@@ -25,21 +25,20 @@ sudo mkdir /etc/ipmi-exporter
 sudo chown ipmi-exporter:ipmi-exporter /etc/ipmi-exporter/
 ```
 
-### 3. Downloading and testing the exporter. 
+### 2. Downloading and testing the exporter. 
 
-Clone this repository on your machine, import the exporter required Git repositories and compile it with `go build`. 
+Clone this repository on your machine, import the exporter required Git repositories, change the functions or exported metrics and compile it with `go build`. 
 
 This will generate an executable, and after successfully testing it with the below-included command (it will output a collection of variables, and among them, there will be `power_consumption` or your defined variables), copy it to the `/etc/ipmi-exporter/` folder.
 
  ```bash
- curl localhost:9338/metrics
+ curl localhost:9392/metrics
  ```
 
-Note that the 9338 port is used because it generates no conflicts with any other already existing exporters (see this [Github page](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) for more information about this and other available ports).
+Note that the 9392 port is used because it was unallocated when this exporter was developed and it generates no conflicts with any other already existing exporter (see this [Github page](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) for more information about this and other available ports).
 
-<!-- On top of that, if you have manually installed Go, it is recommendable to copy the Go executable inside of `go1.x/bin` to `/etc/ipmi-exporter/` as well.  -->
 
-### 4. Transform this executable into a service. 
+### 3. Transform this executable into a service. 
 
 If the above-included instructions were correctly followed, the steps needed to make this simple exporter run as a service are fairly simple. With your preferred editor, create `ipmi-exporter.service` file inside the `/etc/systemd/system` folder and paste the contents of the [ipmi-exporter.service](https://github.com/MarioMartReq/generic-exporter/blob/master/ipmi-exporter.service "ipmi-exporter.service file GitHub page") file included with this repository. Save and close the file. 
 

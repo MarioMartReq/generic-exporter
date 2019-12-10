@@ -12,9 +12,9 @@ func main(){
 	// free exporter ports. For more info visit:
 	// https://github.com/prometheus/prometheus/wiki/Default-port-allocations
 	http.Handle("/metrics", promhttp.Handler())
-	log.Info("Begining to serve on port 9338")
+	log.Info("Begining to serve on port 9392")
 	go func(){
 		self_update()
 	}()
-	log.Fatal(http.ListenAndServe(":9338",nil))
+	log.Fatal(http.ListenAndServe(":9392",nil))
 }
