@@ -12,7 +12,7 @@ import (
 )
 
 var powerConsumption = prometheus.NewGauge(prometheus.GaugeOpts{
-	Name: "power_Consumption", Help: "Displays the power consumption in Watts of an specific VM"})
+	Name: "power_consumption", Help: "Displays the power consumption in Watts of an specific VM"})
 
 func getPower(){
 	cmd := exec.Command("/bin/sh","-c","sudo ipmi-sensors -h localhost --no-sensor-type-output --no-header-output --comma-separated-output --sensor-types Current")
