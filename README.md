@@ -1,6 +1,6 @@
 # Generic CLI-metrics Prometheus exporter.
 
-This is an exporter that was originally created to expose the power consumption measurement given by the below-included command, but it is so generic that could be adapted fairly simple to expose any other desired command-line variable. The instructions describe the installation of an `ipmi-exporter`, but changing the name both in the directories and files will generate no problems at all. 
+This is an exporter that was originally created to expose the power consumption measurement given by the below-included command, but it is so generic that could be adapted fairly simply to expose any other desired command-line variable. The instructions describe the installation of an `ipmi-exporter`, but changing the name both in the directories and files will generate no problems at all. 
 
 ```bash
 ipmi-sensors -h localhost --no-sensor-type-output --no-header-output --comma-separated-output --sensor-types Current
@@ -13,7 +13,7 @@ To change or add new exposed metrics, the function `getPower` inside [`collector
 ### 0. Pre-requisites.
 
 - Golang. It is mandatory to have one of the latest versions to support some of the network functionalities. (The current implementation was compiled with the 1.13 version) 
-- Sudo access to create new users and service to run the exporter. Besides, the above included `ipmi` command requires `sudo` to be executed. 
+- Sudo access to create new users and services to run the exporter. Besides, the above included `ipmi` command requires `sudo` to be executed. 
 
 ### 1. Creating a new user and setting up the environment.
 
